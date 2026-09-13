@@ -1,0 +1,31 @@
+
+Giả sử ta khởi tạo một cấu trúc dữ liệu union-find với n phần tử. Sau đó, ta thực hiện chuỗi các thao tác union()
+sau:  union(0, 1), union(0, 2), union(0, 3), ..., union(0, n-1).
+Trả lời các câu hỏi sau:
+
+(a) Cấu trúc dữ liệu thu được chứa tổng cộng bao nhiêu thành phần liên thông (tức là các tập hợp rời nhau)?
+
+- Chứa 1 thành phần liên thông duy nhất
+
+(b) Giả sử cấu trúc dữ liệu được cài đặt theo phương pháp quick-find. Có bao nhiêu lần cập nhật mảng được thực
+hiện bởi các thao tác union() này (biểu diễn dưới dạng hàm của n theo ký hiệu xấp xỉ ~)? (Lưu ý: cài đặt
+quick-find cho union(p,q) của chúng ta không bao giờ thay đổi giá trị leader[q].)
+
+- (n-1)x(n)/2
+(vì lần 1 thay đổi 1 lần, lần 2 thay 2, lần 3 thay 3....... tổng của 1 đến n-1)
+
+(c) Giả sử cấu trúc dữ liệu được cài đặt theo phương pháp quick-union, và ta gọi find(0) sau chuỗi thao tác nêu
+trên. Thao tác find(0) sẽ thực hiện bao nhiêu lần truy cập mảng (biểu diễn dưới dạng hàm của n theo ký hiệu Θ)?
+(Lưu ý: cài đặt quick-union cho union(p,q) của chúng ta không bao giờ thay đổi parent[q].)
+
+-n vì cây bây giờ thẳng tắp nó truy từ 0 đáy lên đỉnh n-1
+
+(d) Giả sử cấu trúc dữ liệu được cài đặt theo phương pháp weighted quick-union, và ta gọi find(0) sau chuỗi thao
+tác nêu trên. Thao tác find(0) sẽ thực hiện bao nhiêu lần truy cập mảng (biểu diễn dưới dạng hàm của n theo ký
+hiệu Θ)? (Lưu ý: cài đặt weighted quick-union cho union(p,q) của chúng ta sẽ thay đổi parent[q] nếu hai cây có
+cùng kích thước.)
+
+- chỉ tốn 1 thao tác duy nhất vì giờ cây đã phẳng
+
+
+

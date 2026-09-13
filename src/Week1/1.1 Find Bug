@@ -1,0 +1,32 @@
+
+ĐỀ BÀI:
+
+Hãy xem cài đặt không chính xác sau đây của hàm union() trong cấu trúc dữ liệu quick-find. Lưu ý rằng
+mảng leader[] có độ dài $n$ được khởi tạo với leader[i] = i cho mọi $i$, và hàm find(i) trả về giá trị leader[i].
+Javapublic void union(int p, int q) {
+    for (int i = 0; i < leader.length; i++)
+        if (leader[i] == leader[p])
+            leader[i] = leader[q];
+}
+Hãy [đưa ra] một giá trị cho số lượng phần tử $n$, một chuỗi các phép toán union(), một số nguyên $0 \le i < n$
+và một số nguyên $0 \le j < n$, sao cho các phần tử i và j thuộc cùng một tập hợp nhưng find(i) và find(j) trả về
+các giá trị khác nhau. Nói cách khác là tìm 1 testcase mà cài đặt trên chạy sai.
+
+BÀI LÀM:
+
+Lỗi ở dòng if(leader[i]==leader[p])
+do khi thay đổi leader[i]==leader[q] thì leader[p] cũng sẽ nằm trong các th bị thay đổi thành leader[q]
+cho nên thuật toán sẽ sai cách khắc phục là tạo 1 giá trị pid=leader[p]
+sau đó sửa dòng code sai thành : if (leader[i]==pid)
+
+test case sai:
+
+value: 0 0 0 3 3 5
+index: 0 1 2 3 4 5
+union(2,3)...
+if(leader[3]==leader[3](==3)) ==> true
+==> leader[3]=leader[2]=0
+value: 0 0 0 0 3 5
+index: 0 1 2 3 4 5
+if (leader[4]==leader[3](==0)) ==> điều kiện bị thay đổi vì leader 3 bây giờ ko còn là 3 nên thuật toán chạy sai
+

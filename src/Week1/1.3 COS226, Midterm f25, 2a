@@ -1,0 +1,35 @@
+Xét biểu diễn parent-link dưới đây của một cấu trúc dữ liệu weighted quick union (link-by-size):
+
+[SƠ ĐỒ CÂY / PARENT-LINK]
+
+  Cây 1 (Gốc là 4):
+          [4] (gốc)
+         ▲ ▲ ▲
+        /  │  \
+      [0] [5] [6]
+      ▲ ▲  ▲
+     /   \  \
+   [1]   [2] [7]
+          ▲
+          │
+         [3]
+
+  Cây 2 (Gốc là 8):
+          [8] (gốc)
+           ▲
+           │
+          [9]
+
+(Chú thích: Mũi tên chỉ từ nút con lên nút cha. Ví dụ: 3 -> 2 -> 0 -> 4)
+
+[ĐỀ BÀI]
+Trong các cặp (p, q) dưới đây, những cặp nào có thể là tham số của lệnh union(p, q) gần nhất?
+Giả thiết rằng p và q thuộc hai tập khác nhau trước khi lệnh union(p, q) được chạy.
+  (0, 4):   (2, 3)    (4, 0)    (4, 5)
+  (5, 0)    (5, 7)    (6, 4)    (8, 9)
+
+Chú ý: Khi gọi union(p, q) mà cây chứa p và cây chứa q có kích thước bằng nhau thì ta
+sẽ trỏ nút gốc cây chứaq tới gốc của cây chứa p.
+quy tắc: nếu sau này đọc lại nhớ đọc kĩ quy tắc nhé Thiện cận thận đọc lộn á nha Thiện ở tương lai
+kĩ vào  Khi 2 cây bằng kích thước, gốc rootQ trỏ vào gốc rootP nhớ là 2 gốc kphai 2 quả nhé gốc và gốc nha nha nha
+đáp án (4,0);(4,5);(5,0);(6,4);(8,9)

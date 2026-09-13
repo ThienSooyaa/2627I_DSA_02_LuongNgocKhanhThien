@@ -1,0 +1,12 @@
+4. COS226, Midterm s25, 2a
+
+Xét biểu diễn parent-link dưới đây của một cấu trúc dữ liệu weighted quick union (link-by-size):
+
+Index (i):   0  1  2  3  4  5  6  7  8  9
+parent[i]:   0  0  0  0  4  4  4  5  ?  8
+
+Đề bài:
+parent[8] có thể nhận những giá trị nào trong các giá trị 0, 1, ..., 9?
+đáp án là 0 4 8
+(nhớ là nối vào gốc nha cái index 7 mà parent 5 kia là có cây 57 cùng kích cỡ với cây 64 nên chắc nó gọi
+union(4,7) gì đó nên mới thế nha)
