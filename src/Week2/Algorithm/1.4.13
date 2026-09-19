@@ -1,0 +1,36 @@
+1.4.13. Với giả thiết về kích thước các kiểu dữ liệu như trong bài giảng.
+Hãy tính lượng bộ nhớ cần thiết cho một đối tượng thuộc các kiểu dưới đây (xem code của thư viện algs4 hoặc thư viện chuẩn Java)
+
+Dung lượng đối tượng = Overhead + Inner Class Overhead + Biến thực thể + Padding
+-paddding là phần cộng thêm để thành bội của 8
+-overhead chi phí cố định khởi tạo là 16 bytes
+-Inner class overhead dung lượng nếu là class nội trong là 8 bytes
+-biến thực thể:
+boolean: 1 byte (dù chỉ lưu true/false nhưng máy tính truy xuất theo byte)
+byte: 1 byte
+char: 2 bytes (biểu diễn ký tự 16-bit Unicode)
+int: 4 bytes (32-bit)
+float: 4 bytes
+long: 8 bytes (64-bit)
+double: 8 bytes (64-bit thực)
+reference đến object là 8 bytes
+
+a. Accumulator
+chi phí = 16+4+8+8+4=40
+
+b. Transaction
+chi phí = 16+8+8+8=40
+c. FixedCapacityStackOfStrings với kích thước mảng C và N phần tử trong stack
+chi phí=
+
+d. Point2D
+chi phí =
+
+e. Interval1D
+chi phí =
+
+f. Interval2D
+chi phí =
+
+g. Double
+chi phí=
