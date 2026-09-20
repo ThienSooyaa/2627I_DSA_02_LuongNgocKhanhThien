@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 import static Week2.Algorithm.BinarySearch.findFirstIndex;
 
+// Two Pointer
+
 public class SimilarElements {
     public static List listSimilar(int[] arr1, int[] arr2) {
         List<Integer> result = new ArrayList<>();

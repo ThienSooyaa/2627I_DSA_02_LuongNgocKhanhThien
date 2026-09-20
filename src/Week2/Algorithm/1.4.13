@@ -15,13 +15,39 @@ long: 8 bytes (64-bit)
 double: 8 bytes (64-bit thực)
 reference đến object là 8 bytes
 
+Nguyên tắc 1 - Chi phí cố định (Overhead):Mọi Đối tượng (Object) thông thường luôn tốn 16 bytes overhead (chứa thông tin Class, Garbage Collection, Synchronization).
+Mọi Mảng (Array) luôn tốn 24 bytes overhead (gồm 16 bytes overhead của Object + 4 bytes lưu biến length + 4 bytes padding cố định).
+Nếu là Class nội không tĩnh (Non-static Inner Class), tốn thêm 8 bytes overhead cho con trỏ trỏ về Outer Class.
+
+Nguyên tắc 2 - Kích thước biến thực thể (Instance variables):Kiểu nguyên thủy: boolean/byte = 1 byte; char = 2 bytes; int/float = 4 bytes; long/double = 8 bytes.
+Kiểu tham chiếu (con trỏ/reference trỏ tới Object hay Mảng khác) = 8 bytes.
+
+Nguyên tắc 3 - Quy tắc làm tròn (Padding):Bộ nhớ của một đối tượng bắt buộc phải là bội số của 8 bytes.
+Nếu tổng $(Overhead + Fields)$ không chia hết cho 8, ta phải cộng thêm phần Padding để tròn lên bội số của 8 gần nhất.
+
+[ NHÓM 1: ĐỐI TƯỢNG ĐƠN ]                   [ NHÓM 2: ĐỐI TƯỢNG PHỨC HỢP]
++-------------------------+                 +-------------------------+
+| Vỏ Object               |                 | Vỏ Stack (Object)       |
+| - Header: 16 bytes      |                 | - Header: 16 bytes      |
+| - Primitives/References |                 | - Reference a[]: 8 B    |
+| - Padding               |                 | - int N: 4 B            |
++-------------------------+                 | - Padding: 4 B          |
+                                            +-------------------------+
+                                                        |
+                                                        v (trỏ đến)
+                                            +-------------------------+
+                                            | Mảng a[] (Array Object) |
+                                            | - Array Overhead: 24 B  |
+                                            | - C con trỏ: 8C bytes   |
+                                            +-------------------------+
+
 a. Accumulator
 chi phí = 16+4+8+8+4=40
 
 b. Transaction
 chi phí = 16+8+8+8=40
 c. FixedCapacityStackOfStrings với kích thước mảng C và N phần tử trong stack
-chi phí=
+chi phí=(16+8+4+4)+(16+8N)=56+8N
 
 d. Point2D
 chi phí =

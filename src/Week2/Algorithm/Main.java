@@ -1,6 +1,8 @@
 package Week2.Algorithm;
 
 import java.util.Scanner;
+
+import static Week2.Algorithm.FourSum.fourSum;
 import static Week2.Algorithm.SimilarElements.listSimilar;
 import java.util.Arrays;
 import java.util.List;
@@ -10,6 +12,33 @@ import static Week2.Algorithm.EqualPairs.countPairs;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter the number of element of array(min=4): ");
+        int n=sc.nextInt();
+        if (n<4){System.out.println("!!! The number of elenments < 4 !!!!");}
+        else {
+            int[] arr = new int[n];
+            System.out.println("Enter " + n + " numbers " + "(Each number is seperated by space or enter: ");
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextInt();
+            }
+            int result = fourSum(arr);
+            System.out.println("The result is: " + result);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        /* bài similar element
+
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter the amount of numbers of array1: ");
@@ -27,7 +56,7 @@ public class Main {
             b[i] = sc.nextInt();
         }
         List<Integer> result = listSimilar(a,b);
-        System.out.println("Similar elements: "+result);
+        System.out.println("Similar elements: "+result);*/
 
 
 
@@ -40,6 +69,7 @@ public class Main {
 
 
         /*bài fix binarySearch first index
+
         Tạo Scanner để đọc dữ liệu nhập từ bàn phím (Console)
         Scanner sc = new Scanner(System.in);
 
