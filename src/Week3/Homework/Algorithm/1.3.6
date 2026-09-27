@@ -1,0 +1,7 @@
+1.3.6 Đoạn code sau làm gì đối với queue q?
+-đang đảo ngược queue
+
+
+Stack<String> stack = new Stack<String>();
+while (!q.isEmpty())  stack.push(q.dequeue());
+while (!stack.isEmpty())  q.enqueue(stack.pop());

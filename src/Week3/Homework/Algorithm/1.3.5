@@ -1,0 +1,14 @@
+
+1.3.5 Hỏi đoạn code sau in ra kết quả gì khi N bằng 50?
+- 0 1 0 0 1 1 => in ra 1 1 0 0 1 0
+
+Hãy mô tả tổng quan công việc của nó khi N là một giá trị nguyên dương (1 câu)
+- chuyển 50 về dạng nhị phân của nó
+
+Stack<Integer> stack = new Stack<Integer>();
+while (N > 0) {
+  stack.push(N % 2);
+  N = N / 2;
+}
+for (int d : stack) StdOut.print(d);
+StdOut.println();
