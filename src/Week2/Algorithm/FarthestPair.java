@@ -39,7 +39,7 @@ public class FarthestPair {
 
     public static void main(String[] args) {
         // Test case 1: Mảng số thực dương
-        double[] test1 = {3.5, 1.3.2, 9.8, 4.1, 1.25, 7.0};
+        double[] test1 = {3.5, 1.32, 9.8, 4.1, 1.25, 7.0};
         double[] res1 = findFarthestPair(test1);
         System.out.println("--- Test 1 ---");
         System.out.println("Cặp số xa nhất: (" + res1[0] + ", " + res1[1] + ")");
