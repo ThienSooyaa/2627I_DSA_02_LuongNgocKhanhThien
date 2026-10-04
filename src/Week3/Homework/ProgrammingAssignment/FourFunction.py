@@ -2,7 +2,7 @@ def deleteK(stack, k):
     k = int(k)
     for i in range(k):
         stack.pop()
-
+        
 def printK(stack, k):
     k = int(k)
     if k <= len(stack):

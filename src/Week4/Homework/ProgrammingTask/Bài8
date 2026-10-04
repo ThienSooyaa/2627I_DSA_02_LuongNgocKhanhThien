@@ -1,0 +1,231 @@
+BƯỚC 1: TRẢ LỜI TRỰC TIẾP
+
+Trước hết, chuẩn hóa tên gọi:
+
+- Selection Sort: Sắp xếp Chọn
+  → Tìm phần tử nhỏ nhất rồi đưa về vị trí đúng.
+
+- Insertion Sort: Sắp xếp Chèn
+  → Lấy từng phần tử và chèn vào đúng vị trí trong đoạn đã được sắp xếp.
+
+Trả lời trực tiếp:
+
+1. Xét bài toán sắp xếp tổng quát với dữ liệu lớn:
+
+KHÔNG NÊN dùng LinkedList cho cả Selection Sort và Insertion Sort nếu mục tiêu là hiệu năng tốt, vì cả hai đều có độ phức tạp trường hợp xấu nhất là O(N^2).
+
+Với LinkedList, thuật toán phù hợp hơn là Merge Sort với độ phức tạp O(N log N).
+
+2. Nếu bắt buộc phải chọn giữa Selection Sort và Insertion Sort để sắp xếp LinkedList:
+
+- Insertion Sort: NÊN dùng / phù hợp hơn.
+- Selection Sort: KHÔNG phù hợp bằng.
+
+Đặc biệt, Insertion Sort rất hiệu quả khi dữ liệu nhỏ hoặc gần như đã được sắp xếp.
+
+
+BƯỚC 2: GIẢI THÍCH VÌ SAO
+
+1. ĐẶC ĐIỂM CỦA LINKEDLIST
+
+LinkedList có:
+
+- Nhược điểm:
+  Không hỗ trợ truy xuất ngẫu nhiên O(1) như mảng.
+
+  Ví dụ:
+  arr[100] → O(1)
+
+  Nhưng với LinkedList, muốn đến node thứ 100 phải đi qua các node trước đó → O(N).
+
+- Ưu điểm:
+  Chèn hoặc xóa một node khi đã biết vị trí chỉ cần thay đổi một vài con trỏ next → O(1).
+
+Ví dụ:
+
+Trước:
+2 → 4 → 5
+
+Muốn chèn 3:
+
+2 → 3 → 4 → 5
+
+Chỉ cần thay đổi liên kết:
+
+new.next = current
+prev.next = new
+
+
+2. INSERTION SORT TRÊN LINKEDLIST
+
+Cách hoạt động:
+
+- Lấy từng node từ phần chưa được sắp xếp.
+- Tìm vị trí thích hợp trong phần đã được sắp xếp.
+- Chèn node đó vào vị trí vừa tìm được.
+
+Ví dụ:
+
+4 → 2 → 5 → 1 → 3
+
+Sau khi chèn 2:
+
+2 → 4 → 5 → 1 → 3
+
+Sau khi chèn 1:
+
+1 → 2 → 4 → 5 → 3
+
+Sau khi chèn 3:
+
+1 → 2 → 3 → 4 → 5
+
+Điểm quan trọng:
+
+Khi đã tìm được vị trí chèn, việc chèn node chỉ cần thay đổi các liên kết next → O(1).
+
+Vì vậy Insertion Sort tận dụng được ưu điểm của LinkedList.
+
+Đặc biệt, nếu dữ liệu gần như đã được sắp xếp:
+
+1 → 2 → 3 → 4 → 5 → 7 → 6
+
+Insertion Sort chỉ cần đưa 6 về trước 7.
+
+Trong trường hợp tốt nhất, Insertion Sort có thể đạt O(N).
+
+
+3. SELECTION SORT TRÊN LINKEDLIST
+
+Cách hoạt động:
+
+- Mỗi vòng lặp phải tìm phần tử nhỏ nhất trong phần chưa được sắp xếp.
+- Sau đó đưa phần tử nhỏ nhất về vị trí thích hợp.
+
+Ví dụ:
+
+5 → 2 → 4 → 1 → 3
+
+Muốn tìm phần tử nhỏ nhất:
+
+5 → 2 → 4 → 1 → 3
+               ↑
+              min
+
+Phải duyệt qua toàn bộ phần chưa được sắp xếp để tìm min.
+
+Sau đó lại tiếp tục duyệt phần còn lại.
+
+Do đó:
+
+Vòng 1: khoảng N phép so sánh
+Vòng 2: khoảng N-1 phép so sánh
+Vòng 3: khoảng N-2 phép so sánh
+...
+
+Tổng cộng ≈ N²/2
+
+→ O(N²)
+
+Điểm quan trọng:
+
+Dù việc đưa node min về vị trí mới có thể chỉ cần thay đổi con trỏ O(1), nhưng việc TÌM min vẫn phải duyệt qua rất nhiều node.
+
+Vì vậy LinkedList không giúp Selection Sort cải thiện đáng kể.
+
+
+4. SO SÁNH TRỰC TIẾP
+
+Insertion Sort:
+
+- Tìm vị trí chèn.
+- Chèn node bằng cách thay đổi con trỏ.
+- Tận dụng tốt ưu điểm của LinkedList.
+- Có thể chạy O(N) khi dữ liệu gần như đã được sắp xếp.
+
+Selection Sort:
+
+- Mỗi vòng đều phải tìm min.
+- Phải duyệt qua phần chưa sắp xếp.
+- Luôn có độ phức tạp khoảng O(N²).
+- Không tận dụng được nhiều ưu điểm của LinkedList.
+
+
+5. TẠI SAO MERGE SORT PHÙ HỢP VỚI LINKEDLIST?
+
+Merge Sort có độ phức tạp:
+
+O(N log N)
+
+Nó phù hợp với LinkedList vì không cần truy cập ngẫu nhiên theo chỉ số.
+
+Quy trình:
+
+Bước 1:
+Chia LinkedList thành hai phần.
+
+Bước 2:
+Tiếp tục chia nhỏ cho đến khi mỗi phần chỉ còn một node.
+
+Bước 3:
+Trộn (merge) các danh sách đã được sắp xếp.
+
+Ví dụ:
+
+4 → 2 → 5 → 1
+
+Chia:
+
+4 → 2     |     5 → 1
+
+Tiếp tục:
+
+4 | 2     |     5 | 1
+
+Trộn:
+
+2 → 4     |     1 → 5
+
+Cuối cùng:
+
+1 → 2 → 4 → 5
+
+
+Điểm mạnh:
+
+Khi merge hai LinkedList đã được sắp xếp, ta chỉ cần thay đổi các con trỏ next để nối các node theo đúng thứ tự.
+
+Không cần dịch chuyển hàng loạt phần tử như Array.
+
+Vì vậy Merge Sort có độ phức tạp:
+
+Time: O(N log N)
+
+Và có thể triển khai với bộ nhớ phụ rất thấp, đặc biệt với Bottom-up / Natural Merge Sort cho LinkedList.
+
+
+TÓM TẮT CẦN NHỚ
+
+LinkedList:
+
+- Truy cập theo vị trí: O(N)
+- Chèn/xóa khi đã biết vị trí: O(1)
+
+Insertion Sort:
+
+- Tìm vị trí → O(N)
+- Chèn node → O(1)
+- Tổng thể → O(N²)
+- Dữ liệu gần sorted → có thể O(N)
+- Phù hợp hơn Selection Sort trên LinkedList.
+
+Selection Sort:
+
+- Luôn phải tìm min → O(N²)
+- Không tận dụng tốt ưu điểm của LinkedList.
+
+Merge Sort:
+
+- O(N log N)
+- Rất phù hợp với LinkedList.
+- Merge bằng cách thay đổi con trỏ next.

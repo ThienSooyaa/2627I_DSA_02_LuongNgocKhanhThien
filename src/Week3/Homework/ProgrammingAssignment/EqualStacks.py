@@ -4,7 +4,7 @@
 def equalStacks(h1, h2, h3):
     sum1, sum2, sum3 = sum(h1), sum(h2), sum(h3)
     i1, i2, i3 = 0, 0, 0
-    
+
     # Lặp cho đến khi một trong các mảng bị duyệt hết
     while i1 < len(h1) and i2 < len(h2) and i3 < len(h3):
         # Trường hợp cả 3 chiều cao đã bằng nhau

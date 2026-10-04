@@ -1,0 +1,49 @@
+2.1.8
+
+Đề bài:
+Giả sử dùng thuật toán Insertion Sort đối với một mảng thứ tự ngẫu nhiên gồm N phần tử,
+trong đó các phần tử chỉ nhận một trong 3 giá trị. Hỏi thời gian chạy sẽ là tuyến tính, bậc hai, hay nằm giữa?
+
+Lời giải:
+
+Gọi số lượng phần tử nhận 3 giá trị lần lượt là n1, n2, n3.
+
+Ta có:
+
+n1 + n2 + n3 = N
+
+Thời gian chạy của Insertion Sort phụ thuộc vào số lượng nghịch thế (inversion) trong mảng, vì mỗi nghịch thế tương ứng với một lần dịch/đổi chỗ phần tử.
+
+Trong trường hợp xấu nhất, mảng có dạng:
+
+3 3 ... 3 2 2 ... 2 1 1 ... 1
+
+Khi đó số nghịch thế là:
+
+n3*n2 + n3*n1 + n2*n1
+
+Trong đó:
+
+- n3*n2: số nghịch thế giữa nhóm 3 và nhóm 2.
+- n3*n1: số nghịch thế giữa nhóm 3 và nhóm 1.
+- n2*n1: số nghịch thế giữa nhóm 2 và nhóm 1.
+
+Vì:
+
+n1 + n2 + n3 = N
+
+nên tổng số nghịch thế có thể đạt bậc N^2.
+
+Do đó thời gian chạy của Insertion Sort trong trường hợp xấu nhất là:
+
+T(N) = Θ(N^2)
+
+Đối với mảng ngẫu nhiên, số nghịch thế trung bình vẫn có bậc N^2, nên thời gian chạy trung bình cũng là:
+
+T(N) = Θ(N^2)
+
+Kết luận:
+
+Insertion Sort có thời gian chạy bậc hai, Θ(N^2).
+
+Việc mảng chỉ chứa 3 giá trị khác nhau không làm thuật toán trở thành O(N), vì vẫn có thể tồn tại số lượng nghịch thế bậc N^2.

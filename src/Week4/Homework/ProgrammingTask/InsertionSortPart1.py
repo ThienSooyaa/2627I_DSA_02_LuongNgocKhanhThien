@@ -1,4 +1,7 @@
+#BÀI 3
+
 def insertionSort1(n, arr):
+    #bài toán mảng trước đã sắp xếp chỉ còn phần tử cuối cùng chưa vào đúng vị trí
     e = arr[n - 1]
 
     for i in range(n - 2, -1, -1):

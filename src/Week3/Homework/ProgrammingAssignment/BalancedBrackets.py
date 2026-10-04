@@ -1,3 +1,5 @@
+#https://www.hackerrank.com/challenges/balanced-brackets/problem
+
 def checkForBalance(s, x):
     if (s == ")"):
         if (x == "("):
