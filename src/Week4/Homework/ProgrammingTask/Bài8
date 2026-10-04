@@ -223,9 +223,3 @@ Selection Sort:
 
 - Luôn phải tìm min → O(N²)
 - Không tận dụng tốt ưu điểm của LinkedList.
-
-Merge Sort:
-
-- O(N log N)
-- Rất phù hợp với LinkedList.
-- Merge bằng cách thay đổi con trỏ next.
