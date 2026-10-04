@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aespa Chibi Photocard Gallery</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #e0c3fc;
+            text-shadow: 0 0 15px #d8b4fe, 0 0 30px #8a2be2;
+            letter-spacing: 5px;
+            margin-bottom: 40px;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 3s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        .card:nth-child(1) { animation-delay: 0s; }
+        .card:nth-child(2) { animation-delay: 0.3s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+        .card:nth-child(4) { animation-delay: 0.9s; }
+
+        .card:hover {
+            transform: translateY(-20px) scale(1.08);
+            box-shadow: 0 15px 35px #a18cd1;
+            border-color: #a18cd1;
+            animation-play-state: paused;
+            z-index: 10;
+        }
+
+        .card img {
+            width: 220px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .name {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #fbc2eb;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>✨ a e s p a ✨</h1>
+    <div class="gallery">
+        <div class="card">
+            <!-- Đã cập nhật đúng tên file của Karina -->
+            <img src="Screenshot 2026-10-04 183551.png" alt="Karina">
+            <div class="name">KARINA</div>
+        </div>
+        
+        <div class="card">
+            <!-- Đã cập nhật đúng tên file của Giselle -->
+            <img src="Screenshot 2026-10-04 183737.png" alt="Giselle">
+            <div class="name">GISELLE</div>
+        </div>
+        
+        <div class="card">
+            <!-- Đã cập nhật đúng tên file của Winter -->
+            <img src="Screenshot 2026-10-04 183719.png" alt="Winter">
+            <div class="name">WINTER</div>
+        </div>
+        
+        <div class="card">
+            <!-- Đã cập nhật đúng tên file của Ningning -->
+            <img src="Screenshot 2026-10-04 183728.png" alt="Ningning">
+            <div class="name">NINGNING</div>
+        </div>
+    </div>
+</body>
+</html>
