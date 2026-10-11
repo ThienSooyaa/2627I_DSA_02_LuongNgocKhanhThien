@@ -1,0 +1,250 @@
+
+2.2.2 Trình bày cách sắp xếp chuỗi E A S Y Q U E S T I O N bằng thuật toán mergesort top-down.
+
+Mảng ban đầu: E A S Y Q U E S T I O N
+
+Chỉ số (lo..hi): 0 1 2 3 4 5 6 7 8 9 10 11
+
+                      E A S Y Q U E S T I O N
+
+merge(a, 0, 0, 1)     a e S Y Q U E S T I O N
+
+merge(a, 0, 1, 2)     a e s Y Q U E S T I O N
+
+merge(a, 3, 3, 4)     A E S q y U E S T I O N
+
+merge(a, 3, 4, 5)     A E S q u y E S T I O N
+
+merge(a, 0, 2, 5)     a e q s u y E S T I O N
+
+merge(a, 6, 6, 7)     A E Q S U Y e s T I O N
+
+merge(a, 6, 7, 8)     A E Q S U Y e s t I O N
+
+merge(a, 9, 9, 10)    A E Q S U Y E S T i o N
+
+merge(a, 9, 10, 11)   A E Q S U Y E S T i n o
+
+merge(a, 6, 8, 11)    A E Q S U Y e i n o s t
+
+merge(a, 0, 5, 11)    A E E I N O Q S S T U Y
+
+
+
+
+
+----------------------------------------------------------------------
+
+2.2.3 Tương tự câu 2.2.2 nhưng sử dụng thuật toán bottom-up mergesort.
+
+Mảng ban đầu: E A S Y Q U E S T I O N
+
+Thuật toán sẽ lần lượt gộp các mảng con có kích thước sz = 1, 2, 4, 8...
+
+
+
+sz = 1
+
+merge(a, 0, 0, 1)     A E S Y Q U E S T I O N
+
+merge(a, 2, 2, 3)     A E S Y Q U E S T I O N
+
+merge(a, 4, 4, 5)     A E S Y Q U E S T I O N
+
+merge(a, 6, 6, 7)     A E S Y Q U E S T I O N
+
+merge(a, 8, 8, 9)     A E S Y Q U E S I T O N
+
+merge(a, 10, 10, 11)  A E S Y Q U E S I T N O
+
+
+
+sz = 2
+
+merge(a, 0, 1, 3)     A E S Y Q U E S I T N O
+
+merge(a, 4, 5, 7)     A E S Y E Q S U I T N O
+
+merge(a, 8, 9, 11)    A E S Y E Q S U I N O T
+
+
+
+sz = 4
+
+merge(a, 0, 3, 7)     A E E Q S S U Y I N O T
+
+
+
+sz = 8
+
+merge(a, 0, 7, 11)    A E E I N O Q S S T U Y
+
+
+
+
+
+----------------------------------------------------------------------
+
+2.2.5 Cho N = 39, hỏi thuật toán mergesort top-down chạy chuỗi hàm merge với các kích thước mảng nào? Tương tự với bottom-up mergesort.
+
+
+
+* Thuật toán Top-down mergesort:
+
+Thuật toán sẽ chia đôi đệ quy (mid = lo + (hi-lo)/2) cho đến khi mảng chỉ còn 1 phần tử rồi mới ghép lại. Kích thước của mảng kết quả sau mỗi lần hàm merge() hoàn thành (từ cấp nhỏ nhất lên lớn nhất) sẽ tạo ra các mảng có kích thước là:
+
+=> 2, 3, 4, 5, 9, 10, 19, 20, 39.
+
+Giải thích chi tiết các cặp gộp:
+
+- Gộp mảng cỡ (1,1) -> 2
+
+- Gộp mảng cỡ (2,1) -> 3
+
+- Gộp mảng cỡ (2,2) -> 4
+
+- Gộp mảng cỡ (3,2) -> 5
+
+- Gộp mảng cỡ (5,4) -> 9
+
+- Gộp mảng cỡ (5,5) -> 10
+
+- Gộp mảng cỡ (10,9) -> 19
+
+- Gộp mảng cỡ (10,10) -> 20
+
+- Cuối cùng gộp (20,19) -> 39.
+
+
+
+* Thuật toán Bottom-up mergesort:
+
+Thuật toán đi từ dưới lên, gộp các mảng lân cận theo size sz = 1, 2, 4, 8, 16, 32.
+
+Kích thước của mảng kết quả sau các lần hàm merge() hoàn thành là:
+
+=> 2, 3, 4, 7, 8, 16, 32, 39.
+
+Giải thích chi tiết các cặp gộp:
+
+- sz=1: Gộp các cặp (1,1) -> tạo ra mảng cỡ 2.
+
+- sz=2: Gộp các cặp (2,2) -> tạo ra mảng cỡ 4; và mảng lẻ cuối cùng (2,1) -> 3.
+
+- sz=4: Gộp các cặp (4,4) -> tạo ra mảng cỡ 8; và mảng lẻ cuối cùng (4,3) -> 7.
+
+- sz=8: Gộp các cặp (8,8) -> tạo ra mảng cỡ 16.
+
+- sz=16: Gộp cặp (16,16) -> tạo ra mảng cỡ 32.
+
+- sz=32: Gộp cặp cuối cùng (32,7) -> tạo ra mảng cỡ 39.
+
+
+
+
+
+----------------------------------------------------------------------
+
+2.2.7 (*) Chứng minh rằng số bước so sánh mà mergesort dùng đến tăng dần đều (C(N+1) > C(N) với N > 0).
+
+
+
+Gọi C(N) là số phép so sánh tối đa mà mergesort sử dụng để sắp xếp mảng N phần tử.
+
+Công thức truy hồi tính số bước so sánh trong trường hợp xấu nhất:
+
+C(N) = C(floor(N/2)) + C(ceil(N/2)) + N - 1
+
+Với điều kiện cơ sở C(1) = 0.
+
+
+
+Ta chứng minh C(N+1) > C(N) với mọi N > 0 bằng phương pháp quy nạp mạnh.
+
+1. Cơ sở quy nạp:
+
+   C(1) = 0
+
+   C(2) = C(1) + C(1) + 1 = 1 > C(1)
+
+   C(3) = C(1) + C(2) + 2 = 3 > C(2)
+
+2. Giả thiết quy nạp:
+
+   Giả sử bất đẳng thức luôn đúng với mọi k <= N, tức là C(k) > C(k-1).
+
+3. Bước quy nạp:
+
+   Ta cần chứng minh C(N+1) - C(N) > 0. Xét hiệu số:
+
+   C(N+1) - C(N) = [C(floor((N+1)/2)) - C(floor(N/2))] + [C(ceil((N+1)/2)) - C(ceil(N/2))] + 1
+
+
+
+   * Trường hợp N chẵn (N = 2k):
+
+     - floor((N+1)/2) = k, floor(N/2) = k => Hiệu số thứ nhất = 0.
+
+     - ceil((N+1)/2) = k+1, ceil(N/2) = k => Hiệu số thứ hai = C(k+1) - C(k).
+
+     => C(N+1) - C(N) = 0 + (C(k+1) - C(k)) + 1
+
+     Theo giả thiết quy nạp, C(k+1) >= C(k) nên (C(N+1) - C(N)) >= 1 > 0.
+
+
+
+   * Trường hợp N lẻ (N = 2k+1):
+
+     - floor((N+1)/2) = k+1, floor(N/2) = k => Hiệu số thứ nhất = C(k+1) - C(k).
+
+     - ceil((N+1)/2) = k+1, ceil(N/2) = k+1 => Hiệu số thứ hai = 0.
+
+     => C(N+1) - C(N) = (C(k+1) - C(k)) + 0 + 1
+
+     Tương tự, ta có C(N+1) - C(N) >= 1 > 0.
+
+Kết luận: C(N+1) > C(N) với mọi N > 0. Bất đẳng thức được chứng minh.
+
+
+
+
+
+----------------------------------------------------------------------
+
+2.2.8 (*) Giả sử thuật toán mergesort top-down được sửa để bỏ qua lệnh merge() mỗi khi a[mid] <= a[mid+1]. Hãy chứng minh rằng số phép so sánh dùng để sắp xếp một mảng đã được sắp xếp là tuyến tính.
+
+
+
+Chứng minh:
+
+Nếu mảng đầu vào đã được sắp xếp tăng dần, thì tại mọi nhánh gọi đệ quy, phần tử lớn nhất của nửa mảng bên trái (a[mid]) sẽ luôn nhỏ hơn hoặc bằng phần tử nhỏ nhất của nửa mảng bên phải (a[mid+1]).
+
+Do đó, điều kiện kiểm tra `a[mid] <= a[mid+1]` luôn trả về True. Kết quả là lệnh `merge()` (bước duyệt vòng lặp tốn kém) sẽ luôn bị bỏ qua.
+
+
+
+Lúc này, phép so sánh duy nhất được thực hiện tại mỗi node (lần chia tách) không phải là lá, chính là phép kiểm tra `a[mid] <= a[mid+1]`.
+
+Gọi C(N) là số phép so sánh trên mảng đã sắp xếp kích thước N, ta có công thức truy hồi:
+
+C(N) = C(floor(N/2)) + C(ceil(N/2)) + 1
+
+Với C(1) = 0 (vì mảng 1 phần tử là điều kiện dừng).
+
+
+
+Quá trình chia đôi này phân rã mảng thành một cây nhị phân (binary tree).
+
+- Số lượng nút lá của cây này chính là các mảng kích thước 1, tức là N lá.
+
+- Mỗi phép so sánh 1 lần được tính tại 1 nút trong (internal node) của cây (nơi xảy ra phân nhánh đôi).
+
+Theo tính chất của cây nhị phân gốc, một cây có N nút lá thì luôn có chính xác (N - 1) nút trong.
+
+=> Tổng số phép kiểm tra (hay so sánh) chính là tổng số nút trong của cây phân chia.
+
+=> C(N) = N - 1.
+
+
+
+Vì C(N) = N - 1 là một hàm bậc nhất (hàm tuyến tính), nên ta đã chứng minh được độ phức tạp về số phép so sánh khi mảng đã sắp xếp là O(N) (tuyến tính).
